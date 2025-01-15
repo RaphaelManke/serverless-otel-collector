@@ -1,0 +1,23 @@
+receivers:
+  otlp:
+    protocols:
+      grpc:
+      http:
+
+exporters:
+  # debug:
+  #   verbosity: detailed
+  otlp:
+    endpoint: "<endpoint>" 
+    headers:
+      "<key>": "<value>"
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      # exporters: [debug, otlp]
+      exporters: [otlp]
+    metrics:
+      receivers: [otlp]
+      exporters: [otlp]
